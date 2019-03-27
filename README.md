@@ -72,6 +72,9 @@ echo "192.168.168.169 zimbra2.test.fr zimbra2" >> /etc/hosts
 mkdir /zimbra
 cd /zimbra
 wget https://files2.zimbra.com/downloads/7.2.6_GA/zcs-7.2.6_GA_2926.RHEL5_64.20131203115905.tgz --no-check-certificate
+tar xzf zcs-7.2.6_GA_2926.RHEL5_64.20131203115905.tgz
+cd zcs-7.2.6_GA_2926.RHEL5_64.20131203115905
+./install --platform-override
 
 
 
