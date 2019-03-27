@@ -1,4 +1,4 @@
-cat <<EOT  >> /etc/sysconfig/network-scripts/ifcfg-eth0
+ cat <<EOT  >> /etc/sysconfig/network-scripts/ifcfg-eth0
 DEVICE=eth0               ## Nom de l'interface
 BOOTPROTO=static          ## Passer en mode static et non DHCP
 BROADCAST=192.168.168.255   ## Adresse de broadcast
@@ -76,7 +76,8 @@ tar xzf zcs-7.2.6_GA_2926.RHEL5_64.20131203115905.tgz
 cd zcs-7.2.6_GA_2926.RHEL5_64.20131203115905
 ./install --platform-override
 
-
+yum -y install bind bind-utils caching-nameserver 
+cp /etc/named.caching-nameserver.conf /etc/named.conf
 
 
 
