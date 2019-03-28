@@ -69,7 +69,7 @@ reboot
 yum -y install unzip net-tools sysstat openssh-clients perl-core libaio nmap-ncat libstdc++.so.6
 setenforce 0
 sed -i 's/SELINUXTYPE=targeted/SELINUXTYPE=disabled/g' /etc/selinux/config 
-yum -i install wget
+yum install wget
 echo "192.168.168.169 zimbra2.test.fr zimbra2" >> /etc/hosts
 mkdir /zimbra
 cd /zimbra
@@ -81,7 +81,9 @@ sleep 5
 ./install --platform-override
 
 yum -y install bind bind-utils caching-nameserver 
-cp /etc/named.caching-nameserver.conf /etc/named.conf
+cd /etc/
+wget https://github.com/madrugre/zimbra-install/blob/master/etc/named.conf
+/etc/named.caching-nameserver.conf /etc/named.conf
 
 Voir https://wiki.zimbra.com/wiki/Split_DNS
 
