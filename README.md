@@ -79,6 +79,7 @@ cd zcs-7.2.6_GA_2926.RHEL5_64.20131203115905
 yum -y install bind bind-utils caching-nameserver 
 cp /etc/named.caching-nameserver.conf /etc/named.conf
 
+Voir https://wiki.zimbra.com/wiki/Split_DNS
 
 
 
