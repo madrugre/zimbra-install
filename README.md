@@ -77,15 +77,20 @@ wget https://files2.zimbra.com/downloads/7.2.6_GA/zcs-7.2.6_GA_2926.RHEL5_64.201
 tar xzf zcs-7.2.6_GA_2926.RHEL5_64.20131203115905.tgz
 cd zcs-7.2.6_GA_2926.RHEL5_64.20131203115905
 sleep 5
-
-./install --platform-override
+ /etc/init.d/named
+ chkconfig named on
 
 yum -y install bind bind-utils caching-nameserver 
 cd /etc/
 wget https://github.com/madrugre/zimbra-install/blob/master/etc/named.conf
 /etc/named.caching-nameserver.conf /etc/named.conf
 
+
 Voir https://wiki.zimbra.com/wiki/Split_DNS
+
+
+./install --platform-override
+
 
 
 
