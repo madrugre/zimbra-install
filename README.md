@@ -1,4 +1,4 @@
- cat <<EOT  >> /etc/sysconfig/network-scripts/ifcfg-eth0
+cat <<EOT  >> /etc/sysconfig/network-scripts/ifcfg-eth0
 DEVICE=eth0               ## Nom de l'interface
 BOOTPROTO=static          ## Passer en mode static et non DHCP
 BROADCAST=192.168.168.255   ## Adresse de broadcast
@@ -14,12 +14,12 @@ cat <<EOT > /etc/sysconfig/network
 NETORKING=yes
 NETORKING_IPV6=no
 HOSTNAME=zimbra2.test.fr
-GW=192.168.168.1
+GATEWAY=192.168.168.1
 EOT
   
 echo "nameserver 8.8.8.8" > /etc/resolv.conf
 touch /etc/sysconfig/network-scripts/route-eth0
-echo "0.0.0.0/0 via 192.168.168.1 dev eth0"
+#echo "0.0.0.0/0 via 192.168.168.1 dev eth0"
 
 ##########################################################################
 cat <<EOT > /etc/yum.repos.d/CentOS-Base.repo
@@ -64,6 +64,8 @@ EOT
 
 #########################################################
 
+reboot
+
 yum -y install unzip net-tools sysstat openssh-clients perl-core libaio nmap-ncat libstdc++.so.6
 setenforce 0
 sed -i 's/SELINUXTYPE=targeted/SELINUXTYPE=disabled/g' /etc/selinux/config 
@@ -74,6 +76,8 @@ cd /zimbra
 wget https://files2.zimbra.com/downloads/7.2.6_GA/zcs-7.2.6_GA_2926.RHEL5_64.20131203115905.tgz --no-check-certificate
 tar xzf zcs-7.2.6_GA_2926.RHEL5_64.20131203115905.tgz
 cd zcs-7.2.6_GA_2926.RHEL5_64.20131203115905
+sleep 5
+
 ./install --platform-override
 
 yum -y install bind bind-utils caching-nameserver 
